@@ -14,17 +14,26 @@
 
 <div ng-controller="PokemonCtrl" class="container">
 
+	<h1>
+		Poke API
+	</h1>
+	<div class="row">
+		<div class="col-md-1 pull-right">
+			<button class="btn btn-primary"
+			        ng-click="viewPokemonsList()">Ver pokemones
+			</button>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<h1>
-				Pokeapi
-			</h1>
-			<button class="btn btn-primary" ng-click="viewPokemonsList()">Ver pokemones</button>
 			<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
 			       class="table table-hover row-border table-bordered hover">
 			</table>
 		</div>
 	</div>
+
+	<div ng-include="PATH_VIEW_MODAL_SELECTED_POKEMONS"></div>
+	<div ng-include="PATH_VIEW_MODAL_INFO_POKEMON"></div>
 
 </div>
 
@@ -36,7 +45,9 @@
 <script src="./../../../node_modules/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
 <script src="./../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="./../../config/config.js"></script>
+<script src="./../../services/HttpRequestServ.js"></script>
 <script src="./../../services/PokemonServ.js"></script>
 <script src="./../../controllers/PokemonCtrl.js"></script>
+<script src="./../../controllers/SelectedPokemonsCtrl.js"></script>
 </body>
 </html>
