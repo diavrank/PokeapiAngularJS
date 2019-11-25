@@ -1,0 +1,17 @@
+{
+  "name": "PokeapiAngularJS",
+  "version": "1.0.0",
+  "description": "Proyecto para consumir la Pokeapi con AngularJS",
+  "main": "index.js",
+  "repository": "https://github.com/diavrank/PokeapiAngularJS",
+  "author": "Iván Cabrera",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.5",
+    "angular-datatables": "0.5.6",
+    "bootstrap": "3.3.7",
+    "datatables.net": "1.10.16",
+    "jquery": "2.2.4"
+  }
+}

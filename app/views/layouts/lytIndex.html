@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="pokeapiApp">
+<head>
+	<meta charset="utf-8">
+	<title>Pokeapi con AngularJS</title>
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="./../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./../../../node_modules/angular-datatables/dist/css/angular-datatables.min.css">
+	<link rel="stylesheet"
+	      href="./../../../node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css">
+</head>
+<body>
+
+<div ng-controller="PokemonCtrl" class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+				Pokeapi
+			</h1>
+			<button class="btn btn-primary" ng-click="viewPokemonsList()">Ver pokemones</button>
+			<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+			       class="table table-hover row-border table-bordered hover">
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+<script src="./../../../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./../../../node_modules/datatables.net/js/jquery.dataTables.js"></script>
+<script src="./../../../node_modules/angular/angular.min.js"></script>
+<script src="./../../../node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
+<script src="./../../../node_modules/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+<script src="./../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./../../config/config.js"></script>
+<script src="./../../services/PokemonServ.js"></script>
+<script src="./../../controllers/PokemonCtrl.js"></script>
+</body>
+</html>
