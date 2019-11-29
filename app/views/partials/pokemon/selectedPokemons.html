@@ -1,25 +1,46 @@
 <!-- Modal con los pokemones seleccionados -->
 <div id="selectedPokemonsModal" class="modal fade" ng-controller="SelectedPokemonsCtrl">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span
-						class="sr-only">close</span></button>
-				<h4 class="modal-title">Pokemones seleccionados</h4>
-			</div>
-			<div class="modal-body">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span
+                        class="sr-only">close</span></button>
+                <h4 class="modal-title">Pokemones seleccionados</h4>
+            </div>
+            <div class="modal-body">
 
-				<ul>
-					<li ng-repeat="pokemon in pokemonsList" ng-bind="pokemon.name"></li>
-				</ul>
+                <ol type="1">
+                    <li ng-repeat="pokemon in pokemonsList">
+                        <table id="tableSelectedPokemons" class="table table-bordered table-responsive table-striped">
+                            <thead>
+                            <th>Nombre</th>
+                            <th>Experiencia</th>
+                            <th>Altura</th>
+                            <th>Peso</th>
+                            <th>Aspecto</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td ng-bind="pokemon.name"></td>
+                                <td ng-bind="pokemon.base_experience"></td>
+                                <td ng-bind="pokemon.height"></td>
+                                <td ng-bind="pokemon.weight"></td>
+                                <td>
+                                    <img src="{{ pokemon.sprites.front_default }}" alt="" class="img-responsive"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ol>
 
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success">
-					Confirmar
-				</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="printSelectedPokemons()">
+                    Confirmar
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>

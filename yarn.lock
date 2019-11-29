@@ -226,7 +226,7 @@ jquery@2.2.4:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
   integrity sha1-LInWiJterFIqfuoywUUhVZxsvwI=
 
-jquery@>=1.11.0, jquery@>=1.7:
+jquery@>=1.11, jquery@>=1.11.0, jquery@>=1.7:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
@@ -281,6 +281,19 @@ nopt@~1.0.10:
   integrity sha1-bd0hvSoxQXuScn3Vhfim83YI6+4=
   dependencies:
     abbrev "1"
+
+opencollective-postinstall@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
+  integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
+
+print-this@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/print-this/-/print-this-1.15.1.tgz#0aa849b9710c0c897a30fa2f27b3bcd6738300c2"
+  integrity sha512-1YJDETnJDudAPZxudPuaRHmzfzC+wE2YTW/ubFxUAofy1NQaH8bZv/Mt2L8VKu6FeJxKoTV6GWCtFr/xwPCUWg==
+  dependencies:
+    jquery ">=1.11"
+    opencollective-postinstall "^2.0.2"
 
 q@~0.8.12:
   version "0.8.12"

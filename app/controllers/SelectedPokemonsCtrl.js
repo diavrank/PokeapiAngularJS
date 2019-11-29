@@ -1,17 +1,25 @@
-pokeapiApp.controller('SelectedPokemonsCtrl', function($rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder,
-                                                       PokemonServ) {
+pokeapiApp.controller('SelectedPokemonsCtrl', function ($rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder,
+                                                        PokemonServ) {
 
-	/**
-	 * Atributos del controlador
-	 *
-	 */
-	$scope.pokemonsList = PokemonServ.pokemonsList;
+    /**
+     * Atributos del controlador
+     *
+     */
+    $scope.pokemonsList = PokemonServ.pokemonsList;
 
-	/**
-	 * Escuchador para cambios de la lista
-	 */
-	$rootScope.$on('updatePokemonsList', function(event, data) {
-		$scope.pokemonsList = data;
-	});
+    /**
+     * Escuchador para cambios de la lista
+     */
+    $rootScope.$on('updatePokemonsList', (event, data) => {
+        $scope.pokemonsList = data;
+    });
+
+
+    /**
+     * Imprime la tabla de los pokemones seleccionados
+     */
+    $scope.printSelectedPokemons = () => {
+        $("#selectedPokemonsModal").printThis();
+    }
 
 });

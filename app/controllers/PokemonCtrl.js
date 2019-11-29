@@ -179,10 +179,20 @@ pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTO
     /**
      * Visualiza la lista de los pokemones seleccionados
      */
-    $scope.viewPokemonsList = () => {
-        console.log('PokemonsList: ', $scope.pokemonsList);
-        console.log('PokemonsPage: ', $scope.pokemonsPage);
-        $rootScope.$emit('updatePokemonsList', $scope.pokemonsList);
+    $scope.viewPokemonsList = async () => {
+        // console.log('PokemonsList: ', $scope.pokemonsList);
+        // console.log('PokemonsPage: ', $scope.pokemonsPage);
+        let pokemonsInfo = [];
+        for (let selectedPokemon of $scope.pokemonsList) {
+            try {
+                let pokemon = await PokemonServ.getPokemonInfo(selectedPokemon.name);
+                pokemonsInfo.push(pokemon);
+            } catch (e) {
+                console.error("Ha ocurrido un error al cargar la información de algún pokemon: ", e);
+            }
+        }
+        $scope.$applyAsync();
+        $rootScope.$emit('updatePokemonsList', pokemonsInfo);
         $('#selectedPokemonsModal').modal();
     };
 
