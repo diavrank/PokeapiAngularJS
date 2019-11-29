@@ -1,41 +1,47 @@
 <!doctype html>
 <html ng-app="pokeapiApp">
 <head>
-	<meta charset="utf-8">
-	<title>Pokeapi con AngularJS</title>
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="./../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./../../../node_modules/angular-datatables/dist/css/angular-datatables.min.css">
-	<link rel="stylesheet"
-	      href="./../../../node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css">
-	<link rel="stylesheet"
-		  href="./../../../node_modules/angular-loading-bar/build/loading-bar.min.css">
+    <meta charset="utf-8">
+    <title>Pokeapi con AngularJS</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../../../node_modules/angular-datatables/dist/css/angular-datatables.min.css">
+    <link rel="stylesheet"
+          href="./../../../node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css">
+    <link rel="stylesheet"
+          href="./../../../node_modules/angular-loading-bar/build/loading-bar.min.css">
 </head>
 <body>
 
 <div ng-controller="PokemonCtrl" class="container">
 
-	<h1>
-		Poke API
-	</h1>
-	<div class="row">
-		<div class="col-md-1 pull-right">
-			<button class="btn btn-primary"
-			        ng-click="viewPokemonsList()">Ver pokemones
-			</button>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
-			       class="table table-hover row-border table-bordered hover">
-			</table>
-		</div>
-	</div>
+    <h1>
+        Poke API
+    </h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-info" role="alert">
+				<strong>Pokemones seleccionados: </strong>{{pokemonsList.length | number}}
+			</div>
+			<span class="label label-warning">Limite: Hasta 10 pokemones</span>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary"
+                    ng-click="viewPokemonsList()">Ver pokemones
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+                   class="table table-hover row-border table-bordered hover">
+            </table>
+        </div>
+    </div>
 
-	<div ng-include="PATH_VIEW_MODAL_SELECTED_POKEMONS"></div>
-	<div ng-include="PATH_VIEW_MODAL_INFO_POKEMON"></div>
+    <div ng-include="PATH_VIEW_MODAL_SELECTED_POKEMONS"></div>
+    <div ng-include="PATH_VIEW_MODAL_INFO_POKEMON"></div>
 
 </div>
 

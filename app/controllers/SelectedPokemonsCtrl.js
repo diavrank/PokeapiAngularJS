@@ -22,9 +22,9 @@ pokeapiApp.controller('SelectedPokemonsCtrl', function ($rootScope, $scope, $com
         $("#tableSelectedPokemons").printThis({
             pageTitle: "Pokemones seleccionados",
             loadCSS: [
-                "http://localhost:63342/PokeapiAngularJS/node_modules/bootstrap/dist/css/bootstrap.min.css",
-                "http://localhost:63342/PokeapiAngularJS/node_modules/angular-datatables/dist/css/angular-datatables.min.css",
-                "http://localhost:63342/PokeapiAngularJS/node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"
+                "/PokeapiAngularJS/node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "/PokeapiAngularJS/node_modules/angular-datatables/dist/css/angular-datatables.min.css",
+                "/PokeapiAngularJS/node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"
             ]
         });
     }
