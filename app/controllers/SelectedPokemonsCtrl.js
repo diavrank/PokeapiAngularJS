@@ -19,7 +19,14 @@ pokeapiApp.controller('SelectedPokemonsCtrl', function ($rootScope, $scope, $com
      * Imprime la tabla de los pokemones seleccionados
      */
     $scope.printSelectedPokemons = () => {
-        $("#selectedPokemonsModal").printThis();
+        $("#tableSelectedPokemons").printThis({
+            pageTitle: "Pokemones seleccionados",
+            loadCSS: [
+                "http://localhost:63342/PokeapiAngularJS/node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "http://localhost:63342/PokeapiAngularJS/node_modules/angular-datatables/dist/css/angular-datatables.min.css",
+                "http://localhost:63342/PokeapiAngularJS/node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"
+            ]
+        });
     }
 
 });

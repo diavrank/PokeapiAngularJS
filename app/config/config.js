@@ -1,2 +1,3 @@
 var pokeapiApp = angular.module('pokeapiApp', ['datatables',
-	'datatables.bootstrap']);
+    'datatables.bootstrap',
+    'angular-loading-bar']);
