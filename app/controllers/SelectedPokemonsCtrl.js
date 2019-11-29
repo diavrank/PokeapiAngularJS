@@ -20,12 +20,7 @@ pokeapiApp.controller('SelectedPokemonsCtrl', function ($rootScope, $scope, $com
      */
     $scope.printSelectedPokemons = () => {
         $("#tableSelectedPokemons").printThis({
-            pageTitle: "Pokemones seleccionados",
-            loadCSS: [
-                "/PokeapiAngularJS/node_modules/bootstrap/dist/css/bootstrap.min.css",
-                "/PokeapiAngularJS/node_modules/angular-datatables/dist/css/angular-datatables.min.css",
-                "/PokeapiAngularJS/node_modules/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"
-            ]
+            pageTitle: "Pokemones seleccionados"
         });
     }
 

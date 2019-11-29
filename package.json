@@ -14,6 +14,7 @@
     "bootstrap": "3.3.7",
     "datatables.net": "1.10.16",
     "jquery": "2.2.4",
+    "local-web-server": "^3.0.7",
     "print-this": "^1.15.1"
   }
 }
