@@ -1,5 +1,5 @@
 pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder,
-                                               PokemonServ) {
+                                               PokemonServ, AlertServ, DomServ) {
 
     /**
      * Atributos del controlador
@@ -8,39 +8,61 @@ pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTO
     $scope.pokemonsPage = [];
     $scope.pokemonsList = [];
     $scope.pokemonTemp = {};
+    $scope.searchPokemon = '';
     $scope.PATH_VIEW_MODAL_SELECTED_POKEMONS = './../partials/pokemon/selectedPokemons.html';
     $scope.PATH_VIEW_MODAL_INFO_POKEMON = './../partials/pokemon/pokemonInfo.html';
     const PAGE_SIZE = 10;
     const LIMIT_POKEMONS_FOR_LIST = 10;
+    const ENTER_KEY = 13;
 
     /**
      * Configuración del tablero
      */
     $scope.dtOptions = DTOptionsBuilder.newOptions().withOption('ajax', {
         dataSrc: (data) => {
-            data['data'] = data.results;
-            $scope.pokemonsPage = data.results;
-            data['recordsFiltered'] = data.count;
-            data['recordsTotal'] = data.count;
+            let finalData = [];
+            if (data.results) {
+                data['data'] = data.results;
+                data['recordsFiltered'] = data.count;
+                data['recordsTotal'] = data.count;
+                finalData = data.results;
+            } else {
+                finalData.push(data);
+                data['recordsFiltered'] = 1;
+                data['recordsTotal'] = 1;
+            }
+            AlertServ.closeAlert();
+            $scope.pokemonsPage = finalData;
             $scope.$applyAsync();
             // console.info('Datos a recibir: ', data);
-            return data.results;
+            return finalData;
         },
         data: (data) => {
             data['offset'] = data.start;
             data['limit'] = data.length;
+            $scope.searchPokemon = data.search.value;
+            $scope.$applyAsync();
             // console.info('Datos a enviar: ', data);
             return data;
         },
+        beforeSend: (xhr, settings) => {
+            // console.log("xhr: ", xhr);
+            // console.log("settings: ", settings);
+            if ($scope.searchPokemon !== "") {
+                settings.url = PokemonServ.ENDPOINT_POKEMON + $scope.searchPokemon;
+            }
+        },
         error: (e) => {
-            console.error('Ocurrió un error al cargar los datos: ', e);
+            // console.error('Ocurrió un error al cargar los datos: ', e);
+            AlertServ.showAlert("No se encontró el pokemón", AlertServ.DANGER,
+                "alertMessageStateSearch", $scope);
+            $scope.$applyAsync();
         },
         url: 'https://pokeapi.co/api/v2/pokemon/',
         type: 'GET',
     })
         .withOption('processing', true) //para mostrar el estado del progreso
         .withOption('serverSide', true) // para Server-Side Processing (Paginación de lado del servidor)
-        .withOption('searching', false) // para ocultar el buscador (ya que el API no ofrece dicho servicio)
         .withOption('createdRow', (row, data, dataIndex) => {
             // Para agregar directivas de angular al datatable
             $compile(angular.element(row).contents())($scope);
@@ -73,6 +95,18 @@ pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTO
         })
         .withBootstrap();
 
+    /**
+     * Configuramos el buscador para realizar la busqueda despues del enter
+     */
+    $(document).ready(function () {
+        var oTable = $('#datatablePokemons').dataTable();
+        $('#datatablePokemons_filter input').unbind();
+        $('#datatablePokemons_filter input').bind('keyup', function (e) {
+            if (e.keyCode == ENTER_KEY) {
+                oTable.fnFilter(this.value);
+            }
+        });
+    });
     /**
      * Columnas de la tabla
      */

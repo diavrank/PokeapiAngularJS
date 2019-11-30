@@ -16,25 +16,46 @@
 
 <div ng-controller="PokemonCtrl" class="container">
 
-    <h1>
-        Poke API
-    </h1>
     <div class="row">
-        <div class="col-md-6">
-            <div class="alert alert-info" role="alert">
-				<strong>Pokemones seleccionados: </strong>{{pokemonsList.length | number}}
-			</div>
-			<span class="label label-warning">Limite: Hasta 10 pokemones</span>
+        <div class="col-md-4">
+            <img src="/public/img/pokeapi.png" alt="" width="50%" class="img-responsive">
         </div>
-        <div class="col-md-1">
-            <button class="btn btn-primary"
-                    ng-click="viewPokemonsList()">Ver pokemones
-            </button>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="alert alert-info" role="alert"
+                 ng-class="{'alert-info':pokemonsList.length<10,'alert-success':pokemonsList.length==10}">
+                <strong>Pokemones seleccionados: </strong>{{pokemonsList.length | number}}
+                <button class="btn btn-primary pull-right"
+                        ng-click="viewPokemonsList()">Ver pokemones
+                </button>
+            </div>
+            <ol type="a">
+                <li>
+                    <b>Limite:</b>
+                    <span class="label label-info">HASTA 10 POKEMONES</span>
+                </li>
+                <li>
+                    <b>Para buscar pokemones ingresa el nombre del pokemón en el buscador y presiona la tecla </b><span
+                        class="label label-success">ENTER</span>
+                </li>
+                <li>
+                    <b>Dejar en blanco el campo de búsqueda y presionar </b>
+                    <span class="label label-success">ENTER</span>
+                    <b>para resetear la búsqueda</b>
+                </li>
+            </ol>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+            <alert-message alert="alertMessageStateSearch"></alert-message>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="datatablePokemons" datatable="" dt-options="dtOptions" dt-columns="dtColumns"
+                   dt-instance="dtInstance"
                    class="table table-hover row-border table-bordered table-striped hover">
             </table>
         </div>
@@ -55,7 +76,10 @@
 <script src="./../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="./../../../node_modules/angular-loading-bar/build/loading-bar.min.js"></script>
 <script src="./../../config/config.js"></script>
+<script src="./../../directives/AlertMessage.js"></script>
 <script src="./../../services/HttpRequestServ.js"></script>
+<script src="./../../services/DomServ.js"></script>
+<script src="./../../services/AlertServ.js"></script>
 <script src="./../../services/PokemonServ.js"></script>
 <script src="./../../controllers/PokemonCtrl.js"></script>
 <script src="./../../controllers/SelectedPokemonsCtrl.js"></script>
