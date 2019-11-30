@@ -1,53 +1,102 @@
 <!-- Modal con los pokemones seleccionados -->
 <div id="pokemonInfoModal" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span
-						class="sr-only">close</span></button>
-				<h4 class="modal-title">Información de {{ pokemonTemp.name.toUpperCase() }}</h4>
-			</div>
-			<div class="modal-body">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span
+                        class="sr-only">close</span></button>
+                <h4 class="modal-title">Información de {{ pokemonTemp.name.toUpperCase() }}</h4>
+            </div>
+            <div class="modal-body">
 
-				<div class="row">
-					<div class="col-md-12">
-						<p ng-bind="'Experiencia: '+pokemonTemp.base_experience"></p>
-						<p ng-bind="'Altura: '+pokemonTemp.height+' metros'"></p>
-						<p ng-bind="'Peso: '+pokemonTemp.weight+' libras'"></p>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-4">
-						<h3>Habilidades</h3>
-						<ul>
-							<li ng-repeat="ability in pokemonTemp.abilities">
-								<p ng-bind="'Nombre: '+ ability.ability.name"></p>
-								<p ng-bind="'Es oculto: '+ (ability.is_hidden?'Si':'No')"></p>
-								<p ng-bind="'Slot: '+ability.slot"></p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-4">
-						<h3>Movimientos</h3>
-						<ul>
-							<li ng-repeat="move in pokemonTemp.moves">
-								<p ng-bind="move.move.name"></p>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-4">
-						<h3>Aspecto</h3>
-						<img src="{{ pokemonTemp.sprites.back_default }}" alt="" class="img-responsive"/>
-						<img src="{{ pokemonTemp.sprites.front_default }}" alt="" class="img-responsive"/>
-					</div>
-				</div>
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab">Resumen</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab">Aspectos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Habilidades</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seccion4" aria-controls="seccion4" data-toggle="tab" role="tab">Movimientos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seccion5" aria-controls="seccion5" data-toggle="tab" role="tab">Tipos</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seccion6" aria-controls="seccion6" data-toggle="tab" role="tab">Estadisticas</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="seccion1">
+                            <h3>Resumen</h3>
+                            <p ng-bind="'Experiencia: '+pokemonTemp.base_experience"></p>
+                            <p ng-bind="'Altura: '+pokemonTemp.height+' metros'"></p>
+                            <p ng-bind="'Peso: '+pokemonTemp.weight+' libras'"></p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="seccion2">
+                            <h3>Aspectos</h3>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><img src="{{ pokemonTemp.sprites.back_default }}" alt=""
+                                             class="img-responsive"/></td>
+                                    <td><img src="{{ pokemonTemp.sprites.back_shiny }}" alt="" class="img-responsive"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="{{ pokemonTemp.sprites.front_default }}" alt=""
+                                             class="img-responsive"/></td>
+                                    <td><img src="{{ pokemonTemp.sprites.front_shiny }}" alt="" class="img-responsive"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="seccion3">
+                            <h3>Habilidades</h3>
+                            <ul>
+                                <li ng-repeat="ability in pokemonTemp.abilities">
+                                    <p ng-bind="'Nombre: '+ ability.ability.name"></p>
+                                    <p ng-bind="'Es oculto: '+ (ability.is_hidden?'Si':'No')"></p>
+                                    <p ng-bind="'Slot: '+ability.slot"></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="seccion4">
+                            <h3>Movimientos</h3>
+                            <ul>
+                                <li ng-repeat="move in pokemonTemp.moves">
+                                    <p ng-bind="move.move.name"></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="seccion5">
+                            <h3>Tipos</h3>
+                            <ul>
+                                <li ng-repeat="type in pokemonTemp.types">
+                                    <p ng-bind="type.type.name"></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="seccion6">
+                            <h3>Estadisticas</h3>
+                            <ul>
+                                <li ng-repeat="stat in pokemonTemp.stats">
+                                    <p ng-bind="stat.stat.name"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>

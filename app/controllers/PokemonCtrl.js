@@ -186,7 +186,7 @@ pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTO
      * @param pokemonName
      */
     $scope.addPokemonToPokemonsList = (pokemonName) => {
-        console.log('Nombre del pokemon: ', pokemonName);
+        // console.log('Nombre del pokemon: ', pokemonName);
         let pokemon = searchPokemonInPokemonsList(pokemonName);
         if (pokemon) {
             removeElementFromPokemonsList(pokemonName);
@@ -196,14 +196,10 @@ pokeapiApp.controller('PokemonCtrl', function ($rootScope, $scope, $compile, DTO
                 pokemon = searchPokemonInDatatable(pokemonName);
                 $scope.pokemonsList.push(pokemon);
                 if ($scope.pokemonsList.length === LIMIT_POKEMONS_FOR_LIST) {
-                    // $(".pokemon-checkbox input").attr("disabled",true);
                     $(".pokemon-checkbox input").each(function (index, elem) {
                         $(elem).attr("disabled", !($(elem).prop("checked")));
                     });
                 }
-                /*else {
-                    $(".pokemon-checkbox [checked=true]").attr("disabled", false)
-                }*/
             } else {
                 console.warn('Ha llegado al limite de selección de pokemones');
             }

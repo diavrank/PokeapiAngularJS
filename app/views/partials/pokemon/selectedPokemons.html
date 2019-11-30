@@ -8,31 +8,28 @@
                 <h4 class="modal-title">Pokemones seleccionados</h4>
             </div>
             <div class="modal-body" id="tableSelectedPokemons">
-                <ol type="1">
-                    <li ng-repeat="pokemon in pokemonsList">
-                        <table class="table table-bordered table-responsive table-striped">
-                            <thead>
-                            <th>Nombre</th>
-                            <th>Experiencia</th>
-                            <th>Altura</th>
-                            <th>Peso</th>
-                            <th>Aspecto</th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td ng-bind="pokemon.name"></td>
-                                <td ng-bind="pokemon.base_experience"></td>
-                                <td ng-bind="pokemon.height"></td>
-                                <td ng-bind="pokemon.weight"></td>
-                                <td>
-                                    <img ng-src="{{pokemon.sprites.front_default}}" alt="" class="img-responsive"/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </li>
-                </ol>
-
+                <table class="table table-bordered table-responsive table-striped">
+                    <thead>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Experiencia</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                    <th>Aspecto</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="pokemon in pokemonsList">
+                        <td ng-bind="$index+1"></td>
+                        <td ng-bind="pokemon.name"></td>
+                        <td ng-bind="pokemon.base_experience"></td>
+                        <td ng-bind="pokemon.height"></td>
+                        <td ng-bind="pokemon.weight"></td>
+                        <td>
+                            <img ng-src="{{pokemon.sprites.front_default}}" alt="" class="img-responsive"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" ng-click="printSelectedPokemons()">
