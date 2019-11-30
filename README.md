@@ -51,7 +51,7 @@ npm i -g yarn
 
 ## Instalación
 
-- Clonar el repositorio [aqui](https://github.com/gmotzespina/antcab-web)
+- Clonar el repositorio [aqui](https://github.com/diavrank/PokeapiAngularJS)
 
 **Instalando dependencias**
 
