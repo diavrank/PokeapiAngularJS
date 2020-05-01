@@ -13,7 +13,7 @@
     "angular-loading-bar": "^0.9.0",
     "bootstrap": "3.4.1",
     "datatables.net": "1.10.16",
-    "jquery": "2.2.4",
+    "jquery": "3.5.0",
     "local-web-server": "^3.0.7",
     "print-this": "^1.15.1"
   }
